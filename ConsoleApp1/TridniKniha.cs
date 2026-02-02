@@ -6,7 +6,7 @@ namespace AgregaceAKompozice
 
     public TridniKniha()
     {
-        // TODO
+        TridniKniha = new TridniKniha();
         _dochazka = new Dictionary<Student, List<ZaznamDochazky>>();
     }
 

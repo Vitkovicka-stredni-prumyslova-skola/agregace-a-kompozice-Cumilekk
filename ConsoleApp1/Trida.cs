@@ -3,32 +3,38 @@ namespace AgregaceAKompozice
 public class Trida
 {
     public string Nazev { get; }
-    public List<Student> Studenti { get; }
+    public List<Student> Studenti { get; } = new ();
 
     // KOMPOZICE: třídní kniha vzniká spolu s třídou
     public TridniKniha TridniKniha { get; }
 
     public Trida(string nazev)
     {
-        // TODO
-        // Studenti = ...
-        // TridniKniha = new TridniKniha();
+        if(string.IsNullOrWhiteSpace(nazev))
+                throw new ArgumentException("Nazev třídy nesmí být prázdný nebo obsahovat pouze bílé znaky.", nameof(nazev));
+        Nazev = nazev.Trim();
+
+        TridniKniha = new TridniKniha();
     }
 
-    // AGREGACE: student existuje i bez třídy
+    
     public void PridejStudenta(Student s)
     {
-        // TODO
+      if(s == null) throw new ArgumentException(nameof(s));
+      if(Studenti.Contains(s))
+        throw new InvalidOperationException("Student již je ve třídě zapsán."); 
+       
+        Studenti.Add(s);
     }
 
     public void OdeberStudenta(Student s)
     {
-        // TODO
+        
     }
 
     public void VypisStudenty()
     {
-        // TODO
+        
     }
 }
 }
