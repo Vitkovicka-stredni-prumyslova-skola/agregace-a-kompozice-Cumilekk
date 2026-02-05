@@ -1,3 +1,5 @@
+using System.Net.Http.Headers;
+
 namespace AgregaceAKompozice
 {
     public class TridniKniha
@@ -6,22 +8,34 @@ namespace AgregaceAKompozice
 
     public TridniKniha()
     {
-        TridniKniha = new TridniKniha();
         _dochazka = new Dictionary<Student, List<ZaznamDochazky>>();
     }
 
     public void ZapisDochazku(Student s, DateOnly datum, bool pritomen)
-    {
-        // TODO:
-        // pokud student není v dictionary, vytvoř list
-        // pak přidej nový ZaznamDochazky
-    }
+        {
+            if(s == null) throw new ArgumentException(nameof(s));
+            if(!_dochazka.ContainsKey(s))
+            {
+                _dochazka[s] = new List<ZaznamDochazky>();
+            }
+         _dochazka[s].Add(new ZaznamDochazky(datum, pritomen));  
+      
+        }
 
     public void VypisDochazku(Student s)
     {
-        // TODO:
-        // pokud student nemá záznamy, vypiš "Žádné záznamy"
-        // jinak projdi list a vypiš
+        if(s == null) throw new ArgumentException(nameof(s));
+        
+        if(!_dochazka.ContainsKey(s) || _dochazka[s].Count == 0)
+        {
+            Console.WriteLine("žádné záznamy docházky.");
+            return;
+        }
+
+        foreach(var zaznam in _dochazka[s])
+        {
+            Console.WriteLine(zaznam);
+        }   
     }
 }
 }
