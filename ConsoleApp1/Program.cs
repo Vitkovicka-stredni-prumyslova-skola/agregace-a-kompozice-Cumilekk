@@ -8,22 +8,22 @@
             var s1 = new Student("Jan", "Novák", 1);
             var s2 = new Student("Eva", "Nová", 2);
 
-            // T01 - první zápis docházky
+            // test 1
             Console.WriteLine("T01 - Prvni zaznam dochazky:");
             kniha.ZapisDochazku(s1, new DateOnly(2026, 2, 19), true);
             kniha.VypisDochazku(s1);
 
-            // T02 - student nepřítomen
+            // test 2
             Console.WriteLine("\nT02 - Zaznam jako nepritomen:");
             kniha.ZapisDochazku(s1, new DateOnly(2026, 2, 20), false);
             kniha.VypisDochazku(s1);
 
-            // T03 - zápis pro dalšího studenta
+            // test 3
             Console.WriteLine("\nT03 - Druhy student:");
             kniha.ZapisDochazku(s2, new DateOnly(2026, 2, 19), true);
             kniha.VypisDochazku(s2);
 
-            // T04 - více dní u jednoho studenta
+            // test 4
             Console.WriteLine("\nT04 - Vice zaznamu jednoho studenta:");
             kniha.ZapisDochazku(s1, new DateOnly(2026, 2, 21), true);
             kniha.VypisDochazku(s1);
